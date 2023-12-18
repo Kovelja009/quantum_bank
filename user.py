@@ -6,7 +6,7 @@ class User:
 
     def request_money(self, n_qubits):
         s, qc = self.bank.issue_money(n_qubits)
-        self.money.append(s)
+        self.money.append((s, qc))
         return s, qc
 
     def verify_money(self, sq_pair):

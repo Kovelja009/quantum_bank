@@ -146,5 +146,5 @@ class Quantum_Bank:
 
 if __name__ == "__main__":
     qb = Quantum_Bank()
-    s, qc = qb.issue_money(2)
+    s, qc = qb.issue_money(1)
     print(qb.verify_money((s, qc)))

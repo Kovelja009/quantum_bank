@@ -1,4 +1,5 @@
 from qiskit import QuantumRegister, QuantumCircuit
+import random
 
 class Hacker:
     def __init__(self, name):
@@ -13,12 +14,13 @@ class Hacker:
         qc = q_hack_method(n_qubits, n_quantum_states)
         print(qc)
         was_successful = bank.verify_money((uuid, qc))
-        return was_successful
+        return was_successful, qc
     
     # method for generating quantum circuit that will be used
     def qc_generator(self, n_qubits, n_quantum_states):
+
         # hidden tecnique for generating states that will be used
-        rand_nums = [len(self.name)%n_quantum_states for i in range(n_qubits)]
+        rand_nums = [(len(self.name)+ random.randint(0, 3))%n_quantum_states for i in range(n_qubits)]
         
         qreg = QuantumRegister(n_qubits)
         qc = QuantumCircuit(qreg)
@@ -62,7 +64,7 @@ if __name__ == "__main__":
     bob = Hacker("Bob")
 
     # Bob tries to hack the bank
-    was_successful = bob.hack(1002, bob.qc_generator, 1, bank)
+    was_successful, qc = bob.hack(1002, bob.qc_generator, 1, bank)
 
     # verify if the hack was successful
     print(f'{bob.name} was successful: {was_successful}')
