@@ -1,4 +1,4 @@
-class te:
+class User:
     def __init__(self, name, bank):
         self.name = name
         self.bank = bank
